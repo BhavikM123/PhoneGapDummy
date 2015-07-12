@@ -51,7 +51,8 @@ requirejs.config({
         lang: '../misc/ling',
         plugins: '../app/plugins',
         Handlebars:  '../js/libs/handlebars',
-        knockout : '../js/knockout',
+        knockout : '../js/libs/knockout',
+        //domReady: '../js/libs/domReady',
 
         //hbars:          '../js/libs/hbars'
     }/*,
@@ -76,7 +77,8 @@ requirejs([
         'logiks.app',
         'Handlebars',
         'knockout',
-        'init'
+        //'init',
+        //'domReady'
          //'handlebars.runtime',
         //'hbars',
 
@@ -86,7 +88,7 @@ requirejs([
     ko.applyBindings(new appViewModel());
     }),*/
     function(util) {
-       // console.log("handlebars is",handlebars);
+        //console.log("knockout is",ko);
         require(['app/app']);
 	});
     

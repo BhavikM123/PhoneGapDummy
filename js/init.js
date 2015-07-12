@@ -1,4 +1,5 @@
+//alert('js loaded');
 require(['knockout', 'appViewModel'], function(ko, appViewModel) {
-	alert('init js');
+	//alert('init js');
     ko.applyBindings(new appViewModel());
 });
