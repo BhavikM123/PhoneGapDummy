@@ -1,10 +1,19 @@
-<!--This is our template. -->
-<!--Data will be inserted in its according place, replacing the brackets.-->
-<!-- <script id="address-template" type="text/x-handlebars-template">
-  <p>You can find me in {{city}}. My address is {{number}} {{street}}.</p>
-</script>
 
-<p>First name: <strong data-bind="text: firstName"></strong></p>
+<html>
+    <head>
+
+    </head> 
+
+ <body>   
+
+
+    <script id="address-template" type="text/x-handlebars-template">
+          <p>You can find me in {{city}}. My address is {{number}} {{street}}.</p>
+        
+          </script>    
+ <!--This is our template. -->
+<!--Data will be inserted in its according place, replacing the brackets.
+ <p>First name: <strong data-bind="text: firstName"></strong></p>
 <p>Last name: <strong data-bind="text: lastName"></strong></p>
 
 <p>First name: <input data-bind="value: firstName" /></p>
@@ -12,23 +21,40 @@
 
 <p>Full name: <strong data-bind="text: fullName"></strong></p>
 
-<button data-bind="click: capitalizeLastName">Go caps</button>
+<button data-bind="click: capitalizeLastName">Go caps</button> -->
 
-<div class="content-placeholder"></div> -->
+<div class="content-placeholder"></div>
 
-<html>
-    <head>
-        <script type="text/javascript" src="js/init.js">
-
-        //alert('in html')
-
-        </script>
-    </head> 
-
-    <body>
         <p>First name: <input data-bind="value: firstName" /></p>
         <p>First name capitalized: <strong data-bind="text: firstNameCaps"></strong></p>
-    </body>
+
+ </body>
+
+        <script type="text/javascript" src="js/init.js"></script>
+        <script type="text/javascript">
+
+        //alert('in html')
+        $(function () {
+  // Grab the template script
+  var theTemplateScript = $("#address-template").html();
+
+  // Compile the template
+  var theTemplate = Handlebars.compile(theTemplateScript);
+
+  // Define our data object
+  var context={
+    "city": "London",
+    "street": "Baker Street",
+    "number": "221B"
+  };
+
+  // Pass our data to the template
+  var theCompiledHtml = theTemplate(context);
+
+  // Add the compiled html to the page
+  $('.content-placeholder').html(theCompiledHtml);
+});
+        </script>
 </html>
 
 
