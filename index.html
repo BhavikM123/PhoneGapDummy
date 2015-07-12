@@ -37,6 +37,12 @@ requirejs.config({
         },
         'libs/bootstrap': {
         	deps: ['libs/jquery'],
+        },
+        /*"handlebars.runtime": {
+        exports: "Handlebars"
+        },*/
+        Handlebars: {
+            exports: 'Handlebars'
         }
     },
     paths: {
@@ -44,7 +50,21 @@ requirejs.config({
         libs: '../js/libs',
         lang: '../misc/ling',
         plugins: '../app/plugins',
-    }
+        Handlebars:  '../js/libs/handlebars',
+        knockout : '../js/libs/knockout-3.3.0',
+
+        //hbars:          '../js/libs/hbars'
+    }/*,
+    onBuildWrite : function(moduleName, path, content){
+
+        // replace handlebars with the runtime version
+        if (moduleName === 'Handlebars') {
+            path = path.replace('handlebars.js','handlebars.runtime.js');
+            content = fs.readFileSync(path).toString();
+            content = content.replace(/(define\()(function)/, '$1"handlebars", $2');
+        }
+        return content;
+    }*/
 });
 requirejs([
 		'libs/jquery',
@@ -53,10 +73,23 @@ requirejs([
         'commons',
 		'logiks',
 		'logiks.ux',
-        'logiks.app'
-	],function(util) {
+        'logiks.app',
+        'Handlebars',
+        'knockout',
+        'init'
+         //'handlebars.runtime',
+        //'hbars',
+
+	],
+    /*require(['knockout', 'appViewModel'], function(ko, appViewModel) {
+        alert('1');
+    ko.applyBindings(new appViewModel());
+    }),*/
+    function(util) {
+       // console.log("handlebars is",handlebars);
         require(['app/app']);
 	});
+    
 </script>
 <script src="phonegap.js"></script>
 </html>

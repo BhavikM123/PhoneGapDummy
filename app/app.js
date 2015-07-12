@@ -11,6 +11,7 @@ var app = {
             app.loadDataSystem();
         });
     },
+    // Main viewmodel class
     loadDataSystem: function() {
         cleanupDate=window.localStorage.getItem("LAST_UPDATED");
         if(cleanupDate==null) {
